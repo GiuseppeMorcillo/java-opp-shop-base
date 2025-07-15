@@ -2,7 +2,7 @@ package org.lessons.java.shop;
 
 public class Main {
     public static void main(String[] args) {
-        // Creo un prodotto di test
+        // Creo un prodotto
         Prodotto p1 = new Prodotto("Mouse", "Mouse wireless ergonomico", 25.99, 22);
 
         // Accedo direttamente agli attributi
@@ -15,7 +15,7 @@ public class Main {
 
         System.out.println();
 
-        // Altro prodotto di prova
+        // Altro prodotto 
         Prodotto p2 = new Prodotto("Tastiera", "Tastiera meccanica retroilluminata", 79.90, 22);
 
         System.out.println("Codice: " + p2.codice);
