@@ -5,36 +5,81 @@ import java.math.RoundingMode;
 import java.util.Random;
 
 public class Prodotto {
-    public int codice;
-    public String nome;
-    public String descrizione;
-    public BigDecimal prezzo;
-    public BigDecimal iva;
+    // ATTRIBUTI
+    private final int codice;
+    private String nome;
+    private String marca;
+    private BigDecimal prezzo;
+    private BigDecimal iva;
 
-    public Prodotto(String nome, String descrizione, BigDecimal prezzo, BigDecimal iva) {
+    // COSTRUTTORE COMPLETO
+    public Prodotto(String nome, String marca, BigDecimal prezzo, BigDecimal iva) {
         Random rnd = new Random();
         this.codice = rnd.nextInt(100000);
         this.nome = nome;
-        this.descrizione = descrizione;
+        this.marca = marca;
         this.prezzo = prezzo;
         this.iva = iva;
     }
 
-    public BigDecimal getPrezzoBase() {
-        return this.prezzo;
+    // COSTRUTTORE PARZIALE
+    public Prodotto(String nome, String marca) {
+        Random rnd = new Random();
+        this.codice = rnd.nextInt(100000);
+        this.nome = nome;
+        this.marca = marca;
+        this.prezzo = BigDecimal.ZERO;
+        this.iva = BigDecimal.ZERO;
     }
 
+    // GETTER solo per codice
+    public int getCodice() {
+        return codice;
+    }
+
+    // GETTER e SETTER per gli altri attributi
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public String getMarca() {
+        return marca;
+    }
+
+    public void setMarca(String marca) {
+        this.marca = marca;
+    }
+
+    public BigDecimal getPrezzo() {
+        return prezzo;
+    }
+
+    public void setPrezzo(BigDecimal prezzo) {
+        this.prezzo = prezzo;
+    }
+
+    public BigDecimal getIva() {
+        return iva;
+    }
+
+    public void setIva(BigDecimal iva) {
+        this.iva = iva;
+    }
+
+    // METODO di utilità: prezzo con IVA
     public BigDecimal getPrezzoConIva() {
         if (prezzo != null && iva != null) {
-            return prezzo.add(prezzo.multiply(iva)).setScale(2,RoundingMode.DOWN);
+            return prezzo.add(prezzo.multiply(iva)).setScale(2, RoundingMode.DOWN);
         }
         return null;
     }
 
+    // METODO di utilità: nome esteso
     public String getNomeEsteso() {
-        if(nome != null){
-            return codice + " - " + nome;
-        }
-        return null;
+        return codice + " - " + nome;
     }
 }
